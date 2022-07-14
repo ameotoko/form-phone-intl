@@ -37,13 +37,12 @@ class FormPhoneIntl extends FormTextField
         $container = System::getContainer();
         $request = $container->get('request_stack');
 
-
         if ($container->get('contao.routing.scope_matcher')->isFrontendRequest($request->getCurrentRequest())) {
             $GLOBALS['TL_CSS'][] = 'bundles/ameotokophoneintl/css/intlTelInput.min.css';
             $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/ameotokophoneintl/js/intlTelInput.min.js';
 
             if ($this->lookupCountry) {
-                $this->setInitialCountry();
+                $this->initialCountry = $this->getInitialCountry();
             }
         }
 
@@ -58,20 +57,25 @@ class FormPhoneIntl extends FormTextField
         return $request->request->get($strKey . '_e164', Input::post($strKey));
     }
 
-    protected function setInitialCountry(): void
+    protected function getInitialCountry(): string
     {
+        // Skip API calls for localhost
+        if ('::1' == ($ip = Environment::get('ip'))) {
+            return '';
+        }
+
         $client = System::getContainer()->get('phoneintl.http_client');
 
         try {
-            $response = $client->request('GET', Environment::get('ip') . '/country', [
+            $response = $client->request('GET', $ip . '/country', [
                 'base_uri' => 'https://ipinfo.io',
                 'max_duration' => 5,
                 'auth_bearer' => $this->ipinfoToken
             ]);
 
-            $this->initialCountry = trim($response->getContent());
+            return trim($response->getContent());
         } catch (HttpExceptionInterface | TransportExceptionInterface $e) {
-            $this->initialCountry = '';
+            return '';
         }
     }
 }
