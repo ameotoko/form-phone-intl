@@ -10,7 +10,6 @@ use Contao\Environment;
 use Contao\FormTextField;
 use Contao\Input;
 use Contao\System;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
@@ -57,14 +56,15 @@ class FormPhoneIntl extends FormTextField
 
     protected function setInitialCountry(): void
     {
-        $client = HttpClient::create([
-            'base_uri' => 'https://ipinfo.io',
-            'max_duration' => 5,
-            'auth_bearer' => System::getContainer()->getParameter('ipinfoToken')
-        ]);
+        $client = System::getContainer()->get('phoneintl.http_client');
 
         try {
-            $response = $client->request('GET', Environment::get('ip') . '/country');
+            $response = $client->request('GET', Environment::get('ip') . '/country', [
+                'base_uri' => 'https://ipinfo.io',
+                'max_duration' => 5,
+                'auth_bearer' => System::getContainer()->getParameter('ipinfoToken')
+            ]);
+
             $this->initialCountry = trim($response->getContent());
         } catch (HttpExceptionInterface | TransportExceptionInterface $e) {
             $this->initialCountry = '';

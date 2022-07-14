@@ -1,0 +1,4 @@
+services:
+    phoneintl.http_client:
+        alias: 'http_client'
+        public: true
