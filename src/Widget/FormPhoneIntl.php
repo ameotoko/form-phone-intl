@@ -16,6 +16,8 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 /**
  * @property string $initialCountry
+ * @property bool $lookupCountry
+ * @property string $ipinfoToken
  */
 class FormPhoneIntl extends FormTextField
 {
@@ -40,7 +42,9 @@ class FormPhoneIntl extends FormTextField
             $GLOBALS['TL_CSS'][] = 'bundles/ameotokophoneintl/css/intlTelInput.min.css';
             $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/ameotokophoneintl/js/intlTelInput.min.js';
 
-            $this->setInitialCountry();
+            if ($this->lookupCountry) {
+                $this->setInitialCountry();
+            }
         }
 
         return parent::parse($arrAttributes);
@@ -62,7 +66,7 @@ class FormPhoneIntl extends FormTextField
             $response = $client->request('GET', Environment::get('ip') . '/country', [
                 'base_uri' => 'https://ipinfo.io',
                 'max_duration' => 5,
-                'auth_bearer' => System::getContainer()->getParameter('ipinfoToken')
+                'auth_bearer' => $this->ipinfoToken
             ]);
 
             $this->initialCountry = trim($response->getContent());

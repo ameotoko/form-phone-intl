@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+    <file>
+        <body>
+            <trans-unit id="tl_form_field.phonecountry_legend">
+                <target>Country configuration</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.lookupCountry.0">
+                <target>Detect country</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.lookupCountry.1">
+                <target>Try to initial country automatically based on IP address of the visitor.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.ipinfoToken.0">
+                <target>IPInfo access token</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
