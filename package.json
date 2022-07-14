@@ -1,0 +1,15 @@
+{
+    "name": "form-phone-intl",
+    "description": "A phone number widget for Contao CMS",
+    "author": "Andrey Vinichenko",
+    "license": "LGPL-3.0-or-later",
+    "private": true,
+    "scripts": {
+        "assets": "gulp"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "gulp-cli": "^2.3.0",
+        "intl-tel-input": "^17.0.16"
+    }
+}

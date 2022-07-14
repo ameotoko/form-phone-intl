@@ -1,0 +1,18 @@
+<?php $this->extend('form_textfield'); ?>
+
+<?php $this->block('field'); ?>
+
+<?php $this->parent(); ?>
+
+<script>
+    (function (){
+        const el = document.getElementById('ctrl_<?= $this->id ?>');
+        window.intlTelInput(el, {
+            utilsScript: 'bundles/ameotokophoneintl/js/utils.js',
+            hiddenInput: '<?= $this->name ?>_e164',
+            initialCountry: '<?= $this->initialCountry ?>'
+        });
+    })();
+</script>
+
+<?php $this->endblock(); ?>

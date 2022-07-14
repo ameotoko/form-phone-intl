@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+    <file>
+        <body>
+            <trans-unit id="FFL.phone_intl.0">
+                <target>Phone number field</target>
+            </trans-unit>
+            <trans-unit id="FFL.phone_intl.1">
+                <target>Auto-formatted phone field, which uses intl-tel-input plugin</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
