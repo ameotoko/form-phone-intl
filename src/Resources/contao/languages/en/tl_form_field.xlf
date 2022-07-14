@@ -3,7 +3,7 @@
     <file>
         <body>
             <trans-unit id="tl_form_field.phonecountry_legend">
-                <target>Country configuration</target>
+                <target>Country list configuration</target>
             </trans-unit>
             <trans-unit id="tl_form_field.lookupCountry.0">
                 <target>Detect country</target>
@@ -19,6 +19,24 @@
             </trans-unit>
             <trans-unit id="tl_form_field.preferredCountries.1">
                 <target>Selected countries will appear on top of the dropdown list.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.countryListType.0">
+                <target>Show countries</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.countryList.0">
+                <target>Country list</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.countryList.1">
+                <target>Select countries to include or exclude from the dropdown list.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.countryListTypeOptions.all">
+                <target>All countries</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.countryListTypeOptions.exclude">
+                <target>All except selected</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.countryListTypeOptions.include">
+                <target>Only selected</target>
             </trans-unit>
         </body>
     </file>

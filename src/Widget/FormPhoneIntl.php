@@ -20,6 +20,8 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
  * @property bool $lookupCountry
  * @property string $ipinfoToken
  * @property null|string $preferredCountries
+ * @property string $countryListType
+ * @property string $countryList
  */
 class FormPhoneIntl extends FormTextField
 {
@@ -49,6 +51,10 @@ class FormPhoneIntl extends FormTextField
 
             if (null !== $this->preferredCountries) {
                 $this->preferred = json_encode(StringUtil::deserialize($this->preferredCountries, true));
+            }
+
+            if ('all' != $this->countryListType) {
+                $this->countries = json_encode(StringUtil::deserialize($this->countryList, true));
             }
         }
 

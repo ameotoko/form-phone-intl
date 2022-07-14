@@ -14,6 +14,11 @@
             <?php if ($this->preferred): ?>
                 preferredCountries: <?= $this->preferred ?>,
             <?php endif; ?>
+            <?php if ($this->countryListType == 'include'): ?>
+                onlyCountries: <?= $this->countries ?>,
+            <?php elseif ($this->countryListType == 'exclude'): ?>
+                excludeCountries: <?= $this->countries ?>,
+            <?php endif; ?>
         });
     })();
 </script>
