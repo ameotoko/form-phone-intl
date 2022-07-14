@@ -9,6 +9,7 @@ namespace Ameotoko\PhoneIntl\Widget;
 use Contao\Environment;
 use Contao\FormTextField;
 use Contao\Input;
+use Contao\StringUtil;
 use Contao\System;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
@@ -18,6 +19,7 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
  * @property string $initialCountry
  * @property bool $lookupCountry
  * @property string $ipinfoToken
+ * @property null|string $preferredCountries
  */
 class FormPhoneIntl extends FormTextField
 {
@@ -43,6 +45,10 @@ class FormPhoneIntl extends FormTextField
 
             if ($this->lookupCountry) {
                 $this->initialCountry = $this->getInitialCountry();
+            }
+
+            if (null !== $this->preferredCountries) {
+                $this->preferred = json_encode(StringUtil::deserialize($this->preferredCountries, true));
             }
         }
 

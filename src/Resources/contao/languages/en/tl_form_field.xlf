@@ -14,6 +14,12 @@
             <trans-unit id="tl_form_field.ipinfoToken.0">
                 <target>IPInfo access token</target>
             </trans-unit>
+            <trans-unit id="tl_form_field.preferredCountries.0">
+                <target>Preferred countries</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.preferredCountries.1">
+                <target>Selected countries will appear on top of the dropdown list.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

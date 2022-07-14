@@ -10,7 +10,10 @@
         window.intlTelInput(el, {
             utilsScript: 'bundles/ameotokophoneintl/js/utils.js',
             hiddenInput: '<?= $this->name ?>_e164',
-            initialCountry: '<?= $this->initialCountry ?>'
+            initialCountry: '<?= $this->initialCountry ?>',
+            <?php if ($this->preferred): ?>
+                preferredCountries: <?= $this->preferred ?>,
+            <?php endif; ?>
         });
     })();
 </script>
