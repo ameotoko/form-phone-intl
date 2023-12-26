@@ -10,6 +10,6 @@
     "devDependencies": {
         "gulp": "^4.0.2",
         "gulp-cli": "^2.3.0",
-        "intl-tel-input": "^17.0.16"
+        "intl-tel-input": "^18.3.3"
     }
 }
