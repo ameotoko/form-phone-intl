@@ -42,8 +42,12 @@ class FormPhoneIntl extends FormTextField
         $request = $container->get('request_stack');
 
         if ($container->get('contao.routing.scope_matcher')->isFrontendRequest($request->getCurrentRequest())) {
-            $GLOBALS['TL_CSS'][] = 'bundles/ameotokophoneintl/css/intlTelInput.min.css';
-            $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/ameotokophoneintl/js/intlTelInput.min.js';
+            $assets = $container->get('assets.packages');
+
+            $GLOBALS['TL_CSS'][] = $assets->getUrl('css/intlTelInput.min.css', 'ameotoko_phone_intl');
+            $GLOBALS['TL_JAVASCRIPT'][] = $assets->getUrl('js/intlTelInput.min.js', 'ameotoko_phone_intl');
+
+            $this->utilsScript = $assets->getUrl('js/utils.js', 'ameotoko_phone_intl');
 
             if ($this->lookupCountry) {
                 $this->initialCountry = $this->getInitialCountry();

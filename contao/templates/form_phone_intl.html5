@@ -8,7 +8,7 @@
     (function (){
         const el = document.getElementById('ctrl_<?= $this->id ?>');
         window.intlTelInput(el, {
-            utilsScript: 'bundles/ameotokophoneintl/js/utils.js',
+            utilsScript: '<?= $this->utilsScript ?>',
             hiddenInput: '<?= $this->name ?>_e164',
             initialCountry: '<?= $this->initialCountry ?>',
             <?php if ($this->preferred): ?>
