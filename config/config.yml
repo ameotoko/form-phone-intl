@@ -1,0 +1,3 @@
+twig:
+    form_themes:
+        - '@Contao_AmeotokoPhoneIntlBundle/form_phone_intl.html.twig'

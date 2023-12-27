@@ -2,3 +2,8 @@ services:
     phoneintl.http_client:
         alias: 'http_client'
         public: true
+
+    Ameotoko\PhoneIntl\Form\PhoneIntlType:
+        tags: [form.type]
+        public: false
+        arguments: ['@request_stack']

@@ -1,0 +1,27 @@
+{% use 'form_div_layout.html.twig' %}
+
+{% block phone_intl_widget %}
+    {{ block('tel_widget') }}
+    <script>
+        (function (){
+            try {
+                const el = document.getElementById('{{- id -}}');
+                window.intlTelInput(el, {
+                    utilsScript: '{{- asset('js/utils.js', 'ameotoko_phone_intl') -}}',
+                    hiddenInput: '{{- name -}}_e164',
+                    {#initialCountry: '{{- initialCountry -}}',#}
+                    {#{% if preferred|default(false) %}#}
+                    {#    preferredCountries: {{ preferred }},#}
+                    {#{% endif %}#}
+                    {#{% if countryListType == 'include' %}#}
+                    {#    onlyCountries: {{ countries }},#}
+                    {#{% elseif countryListType == 'exclude' %}#}
+                    {#    excludeCountries: {{ countries }},#}
+                    {#{% endif %}#}
+                });
+            } catch (e) {
+                console.log('Could not initialize intlTelInput.');
+            }
+        })();
+    </script>
+{% endblock %}
